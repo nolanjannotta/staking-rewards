@@ -32,7 +32,7 @@ contract Rewards is Ownable {
     }
 
     function redeem() public returns (uint) {
-        require(xdbar.balanceOf(msg.sender) > 0);
+        require(xdbar.balanceOf(msg.sender) > 0, "cant redeem");
         
         
         uint passedBlocks = block.number - lastRedeemed;
