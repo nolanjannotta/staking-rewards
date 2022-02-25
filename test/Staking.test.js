@@ -1,10 +1,7 @@
 var chai = require('chai')
-
-// const {solidity} = require("ethereum-waffle");
 const {expectRevert} = require('@openzeppelin/test-helpers');
 
 var assert = chai.assert;
-// var expect = chai.expect;
 
 const Staking = artifacts.require("Staking");
 const Rewards = artifacts.require("Rewards");
@@ -55,8 +52,7 @@ contract("Staking", (accounts) => {
 
             await dbar.approve(staking.address, web3.utils.toWei("100", "ether"), {from: accounts[0]})
             
-            let receipt = await staking.deposit(web3.utils.toWei("100", "ether"),{from: accounts[0]})
-            // console.log("staked at", receipt.receipt.blockNumber)
+            await staking.deposit(web3.utils.toWei("100", "ether"),{from: accounts[0]})
 
         })
         it("mints xdbar to accounts[0]", async() => {
